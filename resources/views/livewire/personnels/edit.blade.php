@@ -1,7 +1,7 @@
 <div class="row p-4 pt-5">
 
        <div class="col-md-6">
-        <div class="card card-primary">
+        <div class="card card-orange">
               <div class="card-header">
                 <h3 class="card-title"> <i class="fas fa-user-plus fa-2x"></i> Formulaire d'edition  d'un personnel</h3>
               </div>

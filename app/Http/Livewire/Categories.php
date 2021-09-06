@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Categorie;
+use App\Models\Marque;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -24,14 +25,16 @@ class Categories extends Component
 
    return [ 
 
-   'editCat.nom' =>['required','string', Rule::unique("categories", "nom")->ignore($this->editCat['id'])],
+   'editCat.nom' =>'required',
+  
    
 
   ];
  }
   return [ 
 
-    'newCat.nom' =>'required|unique:categories,nom',
+    'newCat.nom' =>'required',
+    
     
  
   ];
@@ -46,6 +49,7 @@ class Categories extends Component
     public function render()
     {
         return view('livewire.categories.index',[
+        
             "categories"=> Categorie::latest()->paginate(4)
         ]) 
         ->extends("layouts.master")
@@ -64,6 +68,7 @@ class Categories extends Component
     public function goToListCat(){
         $this->isBtnAddClicked=false;
         $this->isBtnEditClicked=false;
+        $this->editCat = [];
     }
 
     public function addCat(){
@@ -105,4 +110,5 @@ public function deleteCat($id){
     Categorie::destroy($id);
     $this->dispatchBrowserEvent("showSuccessMessage",["message"=>"Categorie supprimee avec succés!"]);
 }
+
 }

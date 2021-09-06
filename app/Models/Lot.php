@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Lot extends Model
 {
     use HasFactory;
-    protected $fillable = ["num_lot","num_ao","num_ap","fournisseur","qte","cout","categorie_id","marque_id","modele"];
+    protected $fillable = ["num_lot","num_ao","num_ap","fournisseur","qte","cout","categorie_id","marque_id","modele_id"];
     public function Categorie (){ 
         return $this ->belongsTo(Categorie::class);
     }
     public function Marque (){ 
         return $this ->belongsTo(Marque::class);
+    }
+    public function Modele (){ 
+        return $this ->belongsTo(Modeles::class, "modele_id");
     }
 }

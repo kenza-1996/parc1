@@ -2,11 +2,11 @@
           <div class="col-12">
             <div class="card">
               
-              <div class="card-header bg-primary">
+              <div class="card-header bg-orange">
                 <h3 class="card-title"><i class="fas"></i>Liste des Marques</h3>
 
                 <div class="card-tools d-flex align-items-center">
-                <a class="btn btn-link text-white mr-4 d-block" wire:click.prevent='goToAddMar()' ><i class="fa fa-plus"></i>Nouvelle Marque </a>
+                <a class="btn btn-link text-white mr-4 d-block bg-black" wire:click.prevent='goToAddMar()' ><i class="fa fa-plus"></i>Nouvelle Marque </a>
                   <div class="input-group input-group-md" style="width: 250px;">
                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
@@ -26,7 +26,7 @@
                     <tr>
                       <th style="width:10%;">ID</th>
                       <th style="width:30%;">Designation</th>
-                      <th style="width:20%;">Categorie</th>
+                    
                       <th style="width:25%;" class="text-center">Ajouté </th>
         
                       <th style="width:15%;" class="text-center">Action</th>
@@ -39,11 +39,11 @@
                     <tr>
                       <td>{{$marque->id}}</td>
                       <td>{{$marque->nom}}</td>
-                      <td>{{$marque->categorie->nom}}</td>
-                      <td class="text-center"><span class="tag tag-success">{{ $marque->created_at->diffForHumans()}}</span></td>
+                     
+                      <td class="text-center"><span class="tag tag-success">{{\Carbon\Carbon::parse( $marque->created_at)->diffForHumans()}}</span></td>
                       <td class="text-center"> 
-                      
-                      <button class="btn btn-link" wire:click="confirmDelete('{{$marque->nom}}','{{$marque->id}}')"><i class="far fa-trash-alt"></i></button>
+                       <button class="btn btn-link bg-orange" wire:click='goToEditMarq({{$marque->id}})'><i class="far fa-edit"></i></button> 
+                      <button class="btn btn-link bg-orange" wire:click="confirmDelete('{{$marque->nom}}','{{$marque->id}}')"><i class="far fa-trash-alt"></i></button>
                       </td>
                       
                     </tr>

@@ -2,15 +2,18 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\Categories;
+use App\Http\Livewire\Demandes;
 use App\Http\Livewire\Lots;
 use App\Http\Livewire\Marques;
 use App\Http\Livewire\Materiels;
+use App\Http\Livewire\Modele;
 use App\Http\Livewire\Personnels;
 use App\Http\Livewire\Reparateurs;
 use App\Http\Livewire\ReparationExterne;
 use App\Http\Livewire\Structures;
 use App\Http\Livewire\Utilisateurs;
 use App\Models\Article;
+use App\Models\Modeles;
 use App\Models\Reparations_Externe;
 use App\Models\TypeArticle;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +63,7 @@ Route::group([
         Route::get("/lots", Lots::class)->name("lots.index");
         Route::get("/categories", Categories::class)->name("categories.index");
         Route::get("/marques", Marques::class)->name("marques.index");
+        Route::get("/modeles", Modele::class)->name("modeles.index");
         
         //Route::get("/rolesetpermissions", [UserController::class, "index"])->name("rolespermissions.index");
         //
@@ -73,6 +77,17 @@ Route::group([
     ], function(){
 
         Route::get("/personnels", Personnels::class)->name("personnels.index");
+        //Route::get("/rolesetpermissions", [UserController::class, "index"])->name("rolespermissions.index");
+        //
+
+    });
+    Route::group([
+        "prefix" => "Demandes",
+        'as' => 'Demandes.'
+    ], function(){
+
+        Route::get("/demande", Demandes::class)->name("demande.index");
+        Route::get('/demande/pdf', [DemandeController::class, 'createPDF']);
         //Route::get("/rolesetpermissions", [UserController::class, "index"])->name("rolespermissions.index");
         //
 

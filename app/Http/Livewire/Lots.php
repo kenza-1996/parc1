@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Categorie;
 use App\Models\Lot;
 use App\Models\Marque;
+use App\Models\Modeles;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 use Livewire\WithPagination;
@@ -13,29 +14,39 @@ class Lots extends Component
     use WithPagination;
 
     protected $paginationTheme="bootstrap";
-
+    public $currentPage =PAGELIST;
     public $editLot=[];
     public $newLot=[];
 
-    public $isBtnEditLotClicked=false;
-    public $isBtnAddLotClicked=false;
+    public function render()
+    {
+        return view('livewire.lots.index',[
+            "categories"=> Categorie::all(), 
+            "marques" => Marque::all(),
+            "modeles" => Modeles::all(),
+            "lots"=> Lot::latest()->paginate(6)
+        ]) 
+        ->extends("layouts.master")
+        ->section("contenu");
+    }
 
-    public $currentPage =PAGELIST;
+
+ 
 
 
 
     public function rules(){
-        if($this->isBtnEditLotClicked){
+        if($this->currentPage == PAGEEDITFORM){
 
    return [ 
 
-   'editLot.num_lot' =>['required', Rule::unique("lots", "num_lot")->ignore($this->editLot['id'])],
+   'editLot.num_lot' =>'required',
    'editLot.num_ao' =>'required',
    'editLot.num_ap' =>'required',
    'editLot.fournisseur' =>'required|string',
    'editLot.cout' =>'required|numeric',
    'editLot.qte' =>'required|integer',
-   'editLot.modele' =>['required', 'string',Rule::unique("lots", "modele")->ignore($this->editLot['id'])],
+   'editLot.modele_id' =>'required', 
    'editLot.categorie_id' =>'required',
     'editLot.marque_id' =>'required',
 
@@ -43,7 +54,7 @@ class Lots extends Component
  }
   return [ 
 
-    'newLot.num_lot' =>'required|unique:lots,num_lot',
+    'newLot.num_lot' =>'required',
     'newLot.num_ao' =>'required',
     'newLot.num_ap' =>'required',
     'newLot.fournisseur' =>'required|string',
@@ -51,7 +62,7 @@ class Lots extends Component
     'newLot.qte' =>'required|integer',
     'newLot.categorie_id' =>'required',
     'newLot.marque_id' =>'required',
-    'newLot.modele' =>'required|string|unique:lots,modele',
+    'newLot.modele_id' =>'required',
  
   ];
 
@@ -61,35 +72,25 @@ class Lots extends Component
 
 
 //renvoi la liste
-    public function render()
-    {
-        return view('livewire.lots.index',[
-            "categories"=> Categorie::all(), 
-            "marques" => Marque::all(),
-            "lots"=> Lot::latest()->paginate(6)
-        ]) 
-        ->extends("layouts.master")
-        ->section("contenu");
-    }
-
+   
     //renvoi la page edit 
     public function goToEditLot($id){
       $this->editLot=Lot::find($id)->toArray();
      
-        $this->isBtnEditLotClicked=true;
+      $this->currentPage = PAGEEDITFORM;
     }
 
     //renvoie la page create
     public function goToAddLot(){
-          $this->isBtnAddLotClicked=true;
+        $this->currentPage = PAGECREATEFORM;
 
       }
   
 
 //renvoi la page liste
     public function goToListLot(){
-        $this->isBtnEditLotClicked=false;
-        $this->isBtnAddLotClicked=false;
+        $this->currentPage = PAGELIST;
+        $this->editLot = [];
     }
 
 
@@ -119,9 +120,9 @@ class Lots extends Component
 
 
 //suppression lot 
-public function confirmDelete($name, $id){
+public function confirmDelete($id){
     $this->dispatchBrowserEvent("showConfirmMessage",[ "message"=> [
-"text" => "vous etes sur le point de supprimer le LOT $name  ! ,",
+"text" => "vous etes sur le point de supprimer le LOT $id  ! ,",
 "title"=> 'Etes-vous sur de continuer ?',
 "type"=>"warning",
 "data"=> [ "lotid"=> $id ],

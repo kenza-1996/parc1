@@ -25,7 +25,8 @@ class CreateLotsTable extends Migration
            
             $table->foreignId("categorie_id")->constrained();
             $table->foreignId("marque_id")->constrained();
-            $table->string("modele");
+            $table->foreignId("modele_id")->constrained();
+           
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
@@ -39,7 +40,7 @@ class CreateLotsTable extends Migration
     public function down()
     {
         Schema::table('lots', function (Blueprint $table) {
-            $table->dropForeign("categorie_id","marque_id");
+            $table->dropForeign("categorie_id","marque_id","modele_id");
         });
         Schema::dropIfExists('lots');
     }

@@ -1,9 +1,9 @@
 <div class="row p-5 pt-6">
  <div class="col-md-6">
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-orange">
               <div class="card-header">
-                <h3 class="card-title">modifier la Marque </h3>
+                <h3 class="card-title"><b>modifier la Marque</b> </h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -19,12 +19,6 @@
 
 <br>
                    
-                        <label for="exampleSelectRounded0">Categorie</label>
-                        <select  class="custom-select rounded-0"  id="exampleSelectRounded0" wire:model='editMarq.categorie_id'>
-                               @foreach ($categories as $categorie)
-                    <option value="{{$categorie->id}}">{{$categorie->nom}}</option>  
-                    @endforeach
-                  </select>
 
                   <br>
                   <br>

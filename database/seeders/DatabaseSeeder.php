@@ -23,11 +23,15 @@ class DatabaseSeeder extends Seeder
       
 
         $this->call(RoleTableSeeder::class);
-      
         $this->call(PermissionTableSeeder::class);
        
 
-
+        $this->call(CategorieTableSeeder::class);
+        $this->call(ModeleTableSeeder::class);
+        $this->call(MarqueTableSeeder::class);
+        $this->call(StructureTableSeeder::class);
+       
+       
 
         User::find(1)->roles()->attach(1);
         User::find(2)->roles()->attach(2);

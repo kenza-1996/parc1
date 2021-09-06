@@ -1,9 +1,9 @@
 <div class="row p-5 pt-6">
  <div class="col-md-6">
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-orange">
               <div class="card-header">
-                <h3 class="card-title">Ajouter un Lot</h3>
+                <h3 class="card-title"><b>Ajouter un Lot</b></h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -37,7 +37,9 @@
 
 
                     <label for="exampleSelectRounded0">Categorie</label>
+                       
                         <select  class="custom-select rounded-0"  id="exampleSelectRounded0" wire:model='newLot.categorie_id'>
+                              <option value=""></option>   
                                @foreach ($categories as $categorie)
                     <option value="{{$categorie->id}}">{{$categorie->nom}}</option>  
                     @endforeach
@@ -47,7 +49,7 @@
 <br>                  
                     <label for="exampleSelectRounded0">Marque</label>
                         <select  class="custom-select rounded-0"  id="exampleSelectRounded0" wire:model='newLot.marque_id' value="marque">
-                        
+                          <option value=""></option>   
                                @foreach ($marques as $marque)
                              
                                  
@@ -57,12 +59,16 @@
                         </select>
 <br>
 <br>
-                  <label for="exampleInputRounded0" >Modele </label>
-                   <input class="form-control rounded-0" type="text" placeholder="tapez ici" wire:model='newLot.modele' @error('newLot.nom') is-invalid @enderror id="exampleInputRounded0" >
-                   @error('newLot.modele') 
-                   <span class="text-danger">{{$message}}</span>
-                   @enderror
-
+                    <label for="exampleSelectRounded0">Modele</label>
+                        <select  class="custom-select rounded-0"  id="exampleSelectRounded0" wire:model='newLot.modele_id' value="modele">
+                              <option value=""></option>   
+                               @foreach ($modeles as $modele)
+                             
+                                 
+                                   <option value="{{$modele->id}}">{{$modele->nom}}</option>  
+                                 
+                               @endforeach
+                        </select>
 <br>
  <br>                 
                  <label for="exampleInputRounded0" >Fournisseur </label>
@@ -97,7 +103,7 @@
                  <br>
                        <div  class="float-right">
                          <button type="submit" class="btn btn-primary btn-sm">AJOUTER</button>
-                         <button type="button" class="btn btn-warning btn-sm"  wire:click.prevent='goToListLot()'>Annuler</button>
+                         <button type="button" class="btn btn-danger btn-sm"  wire:click.prevent='goToListLot()'>Annuler</button>
                        </div> 
                 <!-- /.card-body -->
 
@@ -115,16 +121,3 @@
 
 </div>
 
- <script>
-  window.addEventListener("showSuccessMessage",event=>{
-      Swal.fire({
-          position:'top-end',
-          icon:'success',
-          toast:true,
-          title:"Lot cree avec succes !",
-          showConfirmButton:false,
-          timer:3500
-      })
-  })
-  
-  </script>

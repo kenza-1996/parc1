@@ -1,9 +1,9 @@
 <div class="row p-5 pt-6">
  <div class="col-md-6">
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-orange">
               <div class="card-header">
-                <h3 class="card-title">Ajouter une reparation</h3>
+                <h3 class="card-title"> <i class="fas fa-tools"></i>Ajouter une reparation</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->

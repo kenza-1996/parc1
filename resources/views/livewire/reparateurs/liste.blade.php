@@ -5,11 +5,11 @@
     <div class="row p-4 pt-5">
           <div class="col-12">
             <div class="card">
-              <div class="card-header bg-primary d-flex align-items-center">
+              <div class="card-header bg-orange d-flex align-items-center">
                 <h3 class="card-title flex-grow-1"> <i class="fas fa-users fa-2x"></i> Liste des Reparateurs</h3>
 
                 <div class="card-tools d-flex align-items-center">
-                  <a class="btn btn-link text-white mr-4 d-block" wire:click.prevent="goToAddReparateur()"> <i class="fas fa-user-plus"></i>
+                  <a class="btn btn-link text-white mr-4 d-block bg-black" wire:click.prevent="goToAddReparateur()"> <i class="fas fa-user-plus"></i>
                   Nouvel Reparateurs</a>
 
                   <div class="input-group input-group-md" style="width: 250px;">
@@ -71,8 +71,8 @@
                      
                       <td class="text-center"><span class="tag tag-success">{{ $reparateur->created_at->diffForHumans() }}</span></td>
                       <td class="text-center">
-                      <button class="btn btn-link" wire:click="goToEditReparateur({{$reparateur->id}})"><i class="far fa-edit"></i></button>
-                      <button class="btn btn-link" wire:click="confirmDelete('{{$reparateur->id}}')"><i class="far fa-trash-alt"></i></button>
+                      <button class="btn btn-link bg-orange" wire:click="goToEditReparateur({{$reparateur->id}})"><i class="far fa-edit"></i></button>
+                      <button class="btn btn-link bg-orange" wire:click="confirmDelete('{{$reparateur->id}}')"><i class="far fa-trash-alt"></i></button>
 
                     </tr>
                    

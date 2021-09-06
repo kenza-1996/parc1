@@ -17,10 +17,10 @@ class CreateModelesTable extends Migration
             $table->id();
             $table->string("nom");
            
-            $table->foreignId("marque_id")->constrained();
+           
             $table->timestamps();
         });
-        Schema::enableForeignKeyConstraints();
+       
     }
 
     /**
@@ -30,9 +30,7 @@ class CreateModelesTable extends Migration
      */
     public function down()
     {
-        Schema::table("modeles", function(Blueprint $table){
-            $table->dropForeign("marque_id");
-        });
+      
         Schema::dropIfExists('modeles');
     }
 }

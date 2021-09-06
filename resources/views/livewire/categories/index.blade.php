@@ -1,10 +1,17 @@
 <div>
 
+ 
+@if ($isBtnEditClicked)
+
+@include("livewire.categories.edit")
+
+
+
+@else
 
 @if ($isBtnAddClicked)
 
 @include("livewire.categories.create")
-
 
 @else
 
@@ -12,4 +19,4 @@
 
 @endif
 
-</div>
+@endif

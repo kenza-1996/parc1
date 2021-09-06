@@ -14,7 +14,7 @@ class Personnels extends Component
 
     use WithPagination;
     protected $paginationTheme = "bootstrap";
-    
+    public $search = "";
     
 
     public $newPersonnel = [];
@@ -25,9 +25,10 @@ class Personnels extends Component
 
     public function render()
     {
+        $searchCriteria = "%".$this->search."%";
         return view('livewire.personnels.index',[
             "structures"=>Structure::all(),
-            "personnels" => Personnel::latest()->paginate(10)
+            "personnels" => Personnel::where("nom","like",$searchCriteria  )->latest()->paginate(10)
         ])
 
 

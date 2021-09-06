@@ -15,7 +15,7 @@ use Livewire\WithPagination;
 class Utilisateurs extends Component
 {
     use WithPagination;
-
+    public $search = "";
     protected $paginationTheme = "bootstrap";
 
     public $currentPage = PAGELIST;
@@ -38,9 +38,9 @@ class Utilisateurs extends Component
     {
 
         Carbon::setLocale("fr");
-
+        $searchCriteria = "%".$this->search."%";
         return view('livewire.utilisateurs.index', [
-            "users" => User::latest()->paginate(5)
+            "users" => User::where("nom", "like", $searchCriteria )->latest()->paginate(5)
         ])
         ->extends("layouts.master")
         ->section("contenu");

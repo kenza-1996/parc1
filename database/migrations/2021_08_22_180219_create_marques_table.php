@@ -17,11 +17,11 @@ class CreateMarquesTable extends Migration
             $table->id();
             $table->string("nom");
            
-            $table->foreignId("categorie_id")->constrained();
+          
             $table->timestamps();
         });
 
-        Schema::enableForeignKeyConstraints();
+    
     }
 
     /**
@@ -31,9 +31,7 @@ class CreateMarquesTable extends Migration
      */
     public function down()
     {
-        Schema::table("marques", function(Blueprint $table){
-            $table->dropForeign("categorie_id");
-        });
+       
         Schema::dropIfExists('marques');
     }
 }

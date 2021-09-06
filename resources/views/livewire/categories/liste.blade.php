@@ -2,11 +2,11 @@
           <div class="col-12">
             <div class="card">
               
-              <div class="card-header bg-primary">
+              <div class="card-header bg-orange">
                 <h3 class="card-title"><i class="fas"></i>Liste des Categories</h3>
 
                 <div class="card-tools d-flex align-items-center">
-                <a class="btn btn-link text-white mr-4 d-block" wire:click.prevent='goToAddCat()'><i class="fa fa-plus"></i>Nouvelle Categorie </a>
+                <a class="btn btn-link text-white mr-4 d-block bg-black" wire:click.prevent='goToAddCat()'><i class="fa fa-plus"></i>Nouvelle Categorie </a>
                   <div class="input-group input-group-md" style="width: 250px;">
                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
@@ -25,10 +25,11 @@
                   <thead>
                     <tr>
                       <th style="width:10%;">ID</th>
-                      <th style="width:50%;">Designation</th>
+                      <th style="width:25%;">Designation</th>
+                      
                       <th style="width:25%;" class="text-center">Ajouté </th>
         
-                      <th style="width:15%;" class="text-center">Action</th>
+                      <th style="width:25%;" class="text-center">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -38,10 +39,11 @@
                     <tr>
                       <td>{{$categorie->id}}</td>
                       <td>{{$categorie->nom}}</td>
-                      <td class="text-center"><span class="tag tag-success">{{ $categorie->created_at->diffForHumans()}}</span></td>
+                 
+                      <td class="text-center"><span class="tag tag-success">{{ \Carbon\Carbon::parse($categorie->created_at)->diffForHumans()}}</span></td>
                       <td class="text-center"> 
-                      
-                      <button class="btn btn-link" wire:click="confirmDelete('{{$categorie->nom}}','{{$categorie->id}}')"><i class="far fa-trash-alt"></i></button>
+                      <button class="btn btn-link bg-orange" wire:click="goToEditCat({{$categorie->id}})"> <i class="far fa-edit"></i> </button>
+                      <button class="btn btn-link bg-orange" wire:click="confirmDelete('{{$categorie->nom}}','{{$categorie->id}}')"><i class="far fa-trash-alt"></i></button>
                       </td>
                       
                     </tr>

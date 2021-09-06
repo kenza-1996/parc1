@@ -4,8 +4,8 @@
 
 
 
-              <div class="card-header  bg-primary">
-                <h3 class="card-title">Modifier Les informations du reparation</h3>
+              <div class="card-header  bg-orange">
+                <h3 class="card-title"><i class="fas fa-tools"></i>Modifier Les informations du reparation</h3>
               </div>
               <!-- /.card-header -->
 

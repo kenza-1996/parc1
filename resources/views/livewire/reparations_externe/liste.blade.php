@@ -2,11 +2,11 @@
           <div class="col-12">
             <div class="card">
               
-              <div class="card-header bg-primary">
-                <h3 class="card-title"><i class="fas"></i>Liste des panne</h3>
+              <div class="card-header bg-orange">
+                <h3 class="card-title"><i class="fas fa-tools"></i>Liste des panne</h3>
 
                 <div class="card-tools d-flex align-items-center">
-                <a class="btn btn-link text-white mr-4 d-block" wire:click.prevent='goToAddReparation()'><i class="fa fa-plus"></i>Nouvelle Reparation</a>
+                <a class="btn btn-link text-white mr-4 d-block bg-black" wire:click.prevent='goToAddReparation()'><i class="fa fa-plus"></i>Nouvelle Reparation</a>
                   <div class="input-group input-group-md" style="width: 500px;">
                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
@@ -57,8 +57,8 @@
                       <td>{{$reparation_externe->date_retour}}</td>
                       <td class="text-center"><span class="tag tag-success">{{ $reparation_externe->created_at->diffForHumans()}}</span></td>
                       <td class="text-center">
-                      <button class="btn btn-link" wire:click.prevent='goToEditReparation({{$reparation_externe->id}})'><i class="far fa-edit"></i></button> 
-                      <button class="btn btn-link" wire:click="confirmDelete('{{$reparation_externe->id}}','{{$reparation_externe->id}}')" ><i class="far fa-trash-alt"></i></button>
+                      <button class="btn btn-link bg-orange" wire:click.prevent='goToEditReparation({{$reparation_externe->id}})'><i class="far fa-edit"></i></button> 
+                      <button class="btn btn-link bg-orange" wire:click="confirmDelete('{{$reparation_externe->id}}','{{$reparation_externe->id}}')" ><i class="far fa-trash-alt"></i></button>
                       
                       </td>
                       

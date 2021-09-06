@@ -25,16 +25,16 @@ class Marques extends Component
 
    return [ 
 
-   'editMarq.nom' =>['required', Rule::unique("marques", "nom")->ignore($this->editMarq['id'])],
-   'editMarq.categorie_id' =>'required',
+   'editMarq.nom' =>'required',
+ 
  
 
   ];
  }
   return [ 
 
-    'newMarq.nom' =>'required|unique:marques,nom',
-    'newMarq.categorie_id' =>'required',
+    'newMarq.nom' =>'required',
+    
     
  
   ];
@@ -48,7 +48,7 @@ class Marques extends Component
     public function render()
     {
         return view('livewire.marques.index',[
-            "categories"=>Categorie::all(),
+           
             "marques"=> Marque::latest()->paginate(4)
         ]) 
         ->extends("layouts.master")

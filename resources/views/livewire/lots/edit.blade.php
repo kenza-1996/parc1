@@ -4,8 +4,8 @@
 
 
 
-              <div class="card-header  bg-primary">
-                <h3 class="card-title">Modifier Les informations du Lot</h3>
+              <div class="card-header  bg-orange">
+                <h3 class="card-title"><b>Modifier Les informations du Lot</b></h3>
               </div>
               <!-- /.card-header -->
 
@@ -45,7 +45,7 @@
 
                     
 
-                   <div class="form-group">
+                  <div class="form-group">
                   <label class="col-sm-5 col-form-label" >Categorie </label>
                   <select class="custom-select form-control-border border-width-2"  style="width: 40%" wire:model='editLot.categorie_id'>
                      @foreach ($categories as $categorie)
@@ -61,9 +61,21 @@
 
                   <select class="custom-select form-control-border border-width-2"   style="width: 40%"  wire:model='editLot.marque_id'>
                    @foreach ($marques as $marque)
-                     @if($marque->categorie_id == $editLot['categorie_id'])
+                    
                      <option value="{{$marque->id}}">{{$marque->nom}}</option>  
-                    @endif
+                   
+                  @endforeach
+                  
+                  </select>
+                </div>
+                   <div class="form-group">
+                  <label class="col-sm-5 col-form-label" > Modele </label>
+
+                  <select class="custom-select form-control-border border-width-2"   style="width: 40%"  wire:model='editLot.modele_id'>
+                   @foreach ($modeles as $modele)
+                  
+                     <option value="{{$modele->id}}">{{$modele->nom}}</option>  
+                
                   @endforeach
                   
                   </select>
@@ -71,15 +83,7 @@
   
                 
 
-                       <div class="form-group row">
-                    <label  class="col-sm-5 col-form-label">Modele :</label>
-                    <div class="col-sm-5">
-                      <input type="text" class="form-control"  placeholder="" wire:model='editLot.modele' @error('editLot.modele') is-invalid @enderror>
-                       @error('editLot.modele') 
-                         <span class="text-danger">{{$message}}</span>
-                       @enderror
-                    </div>
-                  </div>
+                     
 
                        <div class="form-group row">
                     <label  class="col-sm-5 col-form-label">Quantité =</label>
@@ -118,7 +122,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-info">Modifier</button>
-                  <button type="button" class="btn btn-warning btn-sm"  wire:click.prevent='goToListLot()'>Annuler</button>
+                  <button type="button" class="btn btn-danger "  wire:click.prevent='goToListLot()'>Annuler</button>
                 </div>
                 <!-- /.card-footer -->
               </form>

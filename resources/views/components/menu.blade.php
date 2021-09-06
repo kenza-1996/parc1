@@ -34,7 +34,7 @@
 
         @can("admin")
         <li class="nav-item {{ setMenuClass('admin.habilitations.', 'menu-open') }}">
-            <a href="#" class="nav-link {{ setMenuClass('admin.habilitations.', 'active') }}">
+            <a href="#" class="nav-link bg-orange {{ setMenuClass('admin.habilitations.', 'active') }}">
               <i class=" nav-icon fas fa-user-shield"></i>
               <p>
                 Gestion des utilisateurs
@@ -81,8 +81,8 @@
             </ul>
         </li>
         <li class="nav-item {{ setMenuClass('admin.Materiels.', 'menu-open') }}">
-            <a href="#" class="nav-link {{ setMenuClass('admin.Materiels.', 'active') }}">
-              <i class=" nav-icon fas fa-user-shield"></i>
+            <a href="#" class="nav-link {{ setMenuClass('admin.Materiels.', 'active') }} ">
+             <i class="fas fa-desktop"></i>
               <p>
                 Gestion des Materiels
 
@@ -95,35 +95,42 @@
                 href="{{ route('admin.Materiels.materiels.index') }}"
                 class="nav-link {{ setMenuActive('admin.Materiels.materiels.index') }}"
                 >
-                  <i class=" nav-icon fas fa-users-cog"></i>
+                  <i class="fas fa-laptop "></i> 
                   <p>Materiels</p>
                 </a>
               </li>
                <li class="nav-item">
                 <a  href="{{ route('admin.Materiels.categories.index') }}"
                 class="nav-link {{ setMenuActive('admin.Materiels.categories.index') }}">
-                  <i class="nav-icon fas fa-fingerprint"></i>
+                  <i class="nav-icon far fa-circle"></i>
                   <p>Categories</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a  href="{{ route('admin.Materiels.marques.index') }}"
                 class="nav-link {{ setMenuActive('admin.Materiels.marques.index') }}">
-                  <i class="nav-icon fas fa-fingerprint"></i>
+                 <i class="nav-icon far fa-circle"></i>
                   <p>Marques</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a  href="{{ route('admin.Materiels.modeles.index') }}"
+                class="nav-link {{ setMenuActive('admin.Materiels.modeles.index') }}">
+                 <i class="nav-icon far fa-circle"></i>
+                  <p>Modéles</p>
                 </a>
               </li>
                 <li class="nav-item">
                 <a  href="{{ route('admin.Materiels.lots.index') }}"
                 class="nav-link {{ setMenuActive('admin.Materiels.lots.index') }}">
-                  <i class="nav-icon fas fa-fingerprint"></i>
+                 <i class="nav-icon far fa-circle"></i>
                   <p>Lots</p>
                 </a>
               </li>
             </ul>
         </li>
         <li class="nav-item {{ setMenuClass('admin.Personnels.', 'menu-open') }}">
-            <a href="#" class="nav-link {{ setMenuClass('admin.Personnels.', 'active') }}">
+            <a href="#" class="nav-link   {{ setMenuClass('admin.Personnels.', 'active') }}">
               <i class=" nav-icon fas fa-user-shield"></i>
               <p>
                 Gestion des Personnels
@@ -145,12 +152,12 @@
             </ul>
         </li>
         <li class="nav-item {{ setMenuClass('admin.Structures.', 'menu-open') }}">
-            <a href="#" class="nav-link {{ setMenuClass('admin.Structures.', 'active') }}">
-              <i class=" nav-icon fas fa-user-shield"></i>
+            <a href="#" class="nav-link   {{ setMenuClass('admin.Structures.', 'active') }}">
+             <i class="fas fa-laptop-house"></i>
               <p>
                 Gestion des Structures
 
-                <i class="right fas fa-angle-left"></i>
+               
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -159,7 +166,7 @@
                 href="{{ route('admin.Structures.structures.index') }}"
                 class="nav-link {{ setMenuActive('admin.Structures.structures.index') }}"
                 >
-                  <i class=" nav-icon fas fa-users-cog"></i>
+                 <i class="fas fa-laptop-house"></i>
                   <p>Structures</p>
                 </a>
               </li>
@@ -197,8 +204,8 @@
         </li>
        
         
-        <li class="nav-item">
-            <a href="#" class="nav-link">
+        <li class="nav-item {{ setMenuClass('admin.Demandes.', 'menu-open') }}">
+            <a href="  {{ route('admin.Demandes.demande.index') }}" class="nav-link {{ setMenuActive('admin.Demandes.demande.index') }} {{ setMenuClass('admin.Demandes.', 'active') }}">
                 <i class="nav-icon fas fa-coins"></i>
                 <p>
                 demmande de prestation
@@ -210,7 +217,7 @@
         @can("admin-sag")
         <li class="nav-header">Raparation</li>
         <li class="nav-item  {{ setMenuClass('admin-sag.Reparation.', 'menu-open') }}">
-            <a href="{{ route('admin-sag.Reparation.reparations.index') }}" class="nav-link {{ setMenuActive('admin-sag.Reparation.reparations.index') }} {{ setMenuClass('admin-sag.Reparation.', 'active') }}">
+            <a href="  {{ route('admin-sag.Reparation.reparations.index') }}" class="nav-link {{ setMenuActive('admin-sag.Reparation.reparations.index') }} {{ setMenuClass('admin-sag.Reparation.', 'active') }}">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                 Reparation Externe
@@ -218,7 +225,7 @@
             </a>
         </li>
         <li class="nav-item  {{ setMenuClass('admin-sag.Reparateurs.', 'menu-open') }}">
-            <a href=" {{ route('admin-sag.Reparateurs.reparateurs.index') }}" class="nav-link {{ setMenuActive('admin-sag.Reparateurs.reparateurs.index') }} {{ setMenuClass('admin-sag.Reparateurs.', 'active') }} ">
+            <a href="   {{ route('admin-sag.Reparateurs.reparateurs.index') }}" class="nav-link {{ setMenuActive('admin-sag.Reparateurs.reparateurs.index') }} {{ setMenuClass('admin-sag.Reparateurs.', 'active') }} ">
                 <i class="nav-icon fas fa-exchange-alt"></i>
                 <p>
                 Reparateurs

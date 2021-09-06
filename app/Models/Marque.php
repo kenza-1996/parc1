@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Marque extends Model
 {
     use HasFactory;
-    protected $fillable = ["nom","categorie_id"];
-    public function Categorie (){ 
-        return $this ->belongsTo(Categorie::class);
+    public $table = "marques";
+    protected $fillable = ["nom"];
+   
+
+
+    public function categories(){
+        return $this->hasMany(Categorie::class);
     }
     
 }

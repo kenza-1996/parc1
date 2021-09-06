@@ -1,7 +1,7 @@
 <div class="row p-4 pt-5">
 
        <div class="col-md-6">
-        <div class="card card-primary">
+        <div class="card card-orange">
               <div class="card-header">
                 <h3 class="card-title"> <i class="fas fa-user-plus fa-2x"></i> Formulaire d'edition  Structure</h3>
               </div>
@@ -31,8 +31,8 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Appliquer les modification</button>
-                   <button type="button" wire:click="goToListStructure()" class="btn btn-danger">liste des utilisateur</button>
+                  <button type="submit" class="btn btn-primary">Modifier</button>
+                   <button type="button" wire:click="goToListStructure()" class="btn btn-danger">Annuler</button>
                 </div>
               </form>
             </div>

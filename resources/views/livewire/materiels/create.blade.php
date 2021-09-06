@@ -1,95 +1,118 @@
-<div class="row p-5 pt-7">
- <div class="col-md-6">
+<div class="row p-5 pt-6">
+            <div class="col-md-6">
             <!-- general form elements -->
-            <div class="card card-info">
+            <div class="card card-orange">
               <div class="card-header">
-                <h3 class="card-title">Ajouter un Materiel</h3>
+                <h3 class="card-title"><i class="fas fa-user-plus fa-2x"></i> Ajouter materiel</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" wire:submit.prevent='addMateriel()'>
-
+              <form role="form" wire:submit.prevent='addMateriel()''>
                 <div class="card-body">
-                  <div class="form-group">
+
+                
+
+
                   
-                   <label for="exampleInputRounded0" >Numero De Serie </label>
-                   <input class="form-control rounded-0" type="text" placeholder="tapez ici" wire:model='newMateriel.num_serie' @error('newMateriel.num_serie') is-invalid @enderror id="exampleInputRounded0" >
-                   @error('newMateriel.num_serie') 
-                   <span class="text-danger">{{$message}}</span>
-                   @enderror
 
-<br>
-              
-                   <label for="exampleInputRounded0" >Code A Barre</label>
-                   <input class="form-control rounded-0" type="text" placeholder="tapez ici" wire:model='newMateriel.codebarre' @error('newMateriel.codebarre') is-invalid @enderror id="exampleInputRounded0" >
-                   @error('newMateriel.codebarre') 
-                   <span class="text-danger">{{$message}}</span>
-                   @enderror
+                  <div class="form-group">
+                       <label >N° serie</label>
+                       <input type="text" class="form-control @error('newMateriel.num_serie') is-invalid @enderror" wire:model="newMateriel.num_serie">
+                       @error("newMateriel.num_serie")
+                          <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-<br>   
-                        
-                   <label for="exampleInputRounded0" >Designation </label>
-                   <input class="form-control rounded-0" type="text" placeholder="tapez ici" wire:model='newMateriel.nom' @error('newMateriel.nom') is-invalid @enderror id="exampleInputRounded0" >
-                   @error('newMateriel.nom') 
-                   <span class="text-danger">{{$message}}</span>
-                   @enderror
-
-<br>
-
-
-                    <label for="exampleSelectRounded0">Lot</label>
-                        
+                 
+                 <div class="form-group">
+                    <label >Code barre</label>
+                    <input type="text" class="form-control @error('newMateriel.code_barre') is-invalid @enderror" wire:model="newMateriel.code_barre">
+                    @error("newMateriel.code_barre")
+                        <span class="text-danger">{{ $message }}</span>
+                       @enderror
+                  </div>
+                 <div class="form-group">
+                     <label for="exampleSelectRounded0">N° lot</label>
                       <select  class="custom-select rounded-0"  id="exampleSelectRounded0" wire:model='newMateriel.lot_id'>
-                       <option></option>        
-                               @foreach ($lots as $lot)
-                    <option value="{{$lot->id}}">{{$lot->num_lot}}</option>  
-                    @endforeach
-                  </select>
+                         <option ></option>   
+                         @foreach ($lots as $lot)
+                             
+                            <option value="{{$lot->id}}">{{$lot->num_lot}}</option>  
+                          @endforeach
+                      </select>
+                   </div>
+               
+                      
+                  <div class="form-group">
+                      <label for="exampleSelectRounded0">Categorie</label>
+                      <select  class="custom-select rounded-0"  id="exampleSelectRounded0" wire:model='newMateriel.lot_id'>
+                        <option ></option>   
+                        @foreach ($lots as $lot)
+                             
+                         <option value="{{$lot->id}}">{{$lot->categorie->nom}}</option>  
+                        @endforeach
+                     </select>
+                    </div>
 
-<br>
-<br>                  
-                      <label for="exampleSelectRounded0">Etat</label>
+
+              
+                   <div class="form-group">
+                      <label for="exampleSelectRounded0">Marque</label>
+                      <select  class="custom-select rounded-0"  id="exampleSelectRounded0" wire:model='newMateriel.lot_id'>
+                        <option ></option>   
+                        @foreach ($lots as $lot)
+                             
+                         <option value="{{$lot->id}}">{{$lot->marque->nom}}</option>  
+                       @endforeach
+                  </div>
+                <div class="form-group">
+                     <label for="exampleSelectRounded0"></label>
+                     <select  class="custom-select rounded-0"  id="exampleSelectRounded0" >
+                       <option value=""></option>   
+                       
+                    </select>
+                  </div> 
+            
+                <div class="form-group">
+                     <label for="exampleSelectRounded0">Modele</label>
+                     <select  class="custom-select rounded-0"  id="exampleSelectRounded0" wire:model='newMateriel.lot_id'>
+                       <option value=""></option>   
+                        @foreach ($lots as $lot)
+                             
+                          <option value="{{$lot->id}}">{{$lot->modele->nom }}</option>  
+                        @endforeach
+                    </select>
+                  </div> 
+                 
+               <div class="form-group">
+                   <label for="exampleSelectRounded0">Etat</label>
                         <select  class="custom-select rounded-0"  id="exampleSelectRounded0" wire:model='newMateriel.etat'>
-                    <option value=""></option>            
+                      <option ></option>          
                     <option value="neuf">NEUF</option>  
-                    <option value="en panne">EN PANNE</option>  
-                    <option value="en cours" >EN COURS DE REPARATION</option>  
+                   
                   </select>
+                </div>
+                 <div class="form-group">
+                   <label for="exampleSelectRounded0">Affectation</label>
+                        <select  class="custom-select rounded-0"  id="exampleSelectRounded0" wire:model='newMateriel.affectation'>
+                      <option ></option>          
+                    <option value="non affecte">Non affecté</option>  
+                   
+                  </select>
+                </div>
 
-<br>
-<br>                   
-<br>
-
-                       <div  class="float-right">
-                         <button type="submit" class="btn btn-primary btn-sm">AJOUTER</button>
-                         <button type="button" class="btn btn-warning btn-sm"  wire:click.prevent='goToListMateriel()'>Annuler</button>
-                       </div> 
+              </div>
                 <!-- /.card-body -->
 
-              
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Enregistrer</button>
+                  <button type="button" wire:click="goToListMateriel()" class="btn btn-danger">Annuler</button>
+                </div>
               </form>
             </div>
             <!-- /.card -->
 
-           
-           
-
-          </div>
-
-
-
+  </div>
 </div>
 
- <script>
-  window.addEventListener("showSuccessMessage",event=>{
-      Swal.fire({
-          position:'top-end',
-          icon:'success',
-          toast:true,
-          title:"Lot cree avec succes !",
-          showConfirmButton:false,
-          timer:3500
-      })
-  })
-  
-  </script>
+

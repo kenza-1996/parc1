@@ -16,11 +16,12 @@ class CreateMaterielsTable extends Migration
         Schema::create('materiels', function (Blueprint $table) {
             $table->id();
             $table->string("num_serie");
-            $table->string("codebarre");
-            $table->string("nom")->nullable();
-            $table->string("etat");
-            $table->boolean("affectation")->default(0);
+            $table->string("code_barre");
+           
+            $table->char("etat")->array_rand('neuf', 'en cour de reparation', 'en panne', 'repare');
+            $table->char("affectation")->array_rand('non affecte','affect');
             $table->foreignId("lot_id")->constrained();
+            
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();

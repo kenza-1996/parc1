@@ -1,7 +1,7 @@
 <div class="row p-4 pt-5">
             <div class="col-md-6">
             <!-- general form elements -->
-            <div class="card card-info">
+            <div class="card card-orange">
               <div class="card-header">
                 <h3 class="card-title"><i class="fas fa-user-plus fa-2x"></i> Formulaire de création d'un nouvel utilisateur</h3>
               </div>
@@ -47,7 +47,7 @@
                   <div class="form-group">
                     <label >Sexe</label>
                     <select class="form-control @error('newUser.sexe') is-invalid @enderror" wire:model="newUser.sexe">
-                        <option value="">---------</option>
+                        <option value=""></option>
                         <option value="H">Homme</option>
                         <option value="F">Femme</option>
                     </select>
